@@ -1,4 +1,4 @@
-# Gatsby example
+# Gatsby Material-UI DarkMode Example
 
 ## How to use
 
