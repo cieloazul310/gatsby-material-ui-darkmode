@@ -5,8 +5,9 @@
 Download the example [or clone the repo](https://github.com/mui-org/material-ui):
 
 ```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/gatsby
-cd gatsby
+git clone git@github.com:cieloazul310/gatsby-material-ui-darkmode.git
+cd gatsby-material-ui-darkmode
+yarn install
 ```
 
 Install it and run:
