@@ -18,7 +18,7 @@ $ yarn run build
 ## Custom Hook
 
 ```jsx
-import useTheme from '@material-ui/core/styles/useTheme()';
+import useTheme from '@material-ui/core/styles/useTheme';
 import { useToggleDarkMode } from './DispatchContext';
 
 function App() {
