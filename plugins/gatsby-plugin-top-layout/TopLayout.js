@@ -3,31 +3,20 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import initialTheme from '../../src/utils/theme';
-import { DispatchContext, themeReducer } from '../../src/utils/themeReducer';
+import initialTheme from '../../src/theme';
+import { themeReducer, initialState } from '../../src/themeReducer';
+import { DispatchContext } from '../../src/DispatchContext';
 
 export default function TopLayout(props) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [state, dispatch] = React.useReducer(themeReducer, {
-    darkMode: prefersDarkMode
-  });
+  const [state, dispatch] = React.useReducer(themeReducer, initialState);
   const { darkMode } = state;
   const theme = React.useMemo(() => {
     return createMuiTheme({
       ...initialTheme,
       palette: {
-        primary: {
-          main: darkMode
-            ? initialTheme.palette.primary[300]
-            : initialTheme.palette.primary.main
-        },
-        secondary: {
-          main: darkMode
-            ? initialTheme.palette.secondary[300]
-            : initialTheme.palette.secondary.main
-        },
+        primary: initialTheme.palette.primary,
+        secondary: initialTheme.palette.secondary,
         type: darkMode ? 'dark' : 'light'
       }
     });

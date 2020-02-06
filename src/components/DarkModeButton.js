@@ -3,7 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import useTheme from '@material-ui/core/styles/useTheme';
 import Brightness4 from '@material-ui/icons/Brightness4';
 import Brightness5 from '@material-ui/icons/Brightness5';
-import { useToggleDarkMode } from '../utils/themeReducer';
+import { useToggleDarkMode } from '../DispatchContext';
 
 function DarkModeButton(props) {
   const paletteType = useTheme().palette.type;

@@ -1,27 +1,38 @@
-# Gatsby Material-UI DarkMode Example
+# Gatsby Material-UI dark mode example
+
+[Gatsby] [Material-UI] dark mode example
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
-
 ```sh
-git clone git@github.com:cieloazul310/gatsby-material-ui-darkmode.git
-cd gatsby-material-ui-darkmode
-yarn install
+$ git clone git@github.com:cieloazul310/gatsby-material-ui-darkmode.git
+$ cd gatsby-material-ui-darkmode
+
+# develop
+$ yarn run develop
+
+# build
+$ yarn run build
 ```
 
-Install it and run:
+## Custom Hook
 
-```sh
-npm install
-npm run develop
+```jsx
+import useTheme from '@material-ui/core/styles/useTheme()';
+import { useToggleDarkMode } from './DispatchContext';
+
+function App() {
+  const paletteType = useTheme().palette.type;
+  const _toggleDarkMode = useToggleDarkMode();
+  return (
+    <div>
+      <button onClick={_toggleDarkMode}>
+        {paletteType === 'dark' ? 'on' : 'off'}
+      </button>
+    </div>
+  );
+}
 ```
 
-## The idea behind the example
-
-[Gatsby](https://github.com/gatsbyjs/gatsby) is a static site generator for React.
-
-## gatsby-theme-material-ui
-
-Looking for an example with fewer boilerplate but less freedom?
-Check [`/examples/gatsby-theme`](https://github.com/mui-org/material-ui/tree/master/examples/gatsby-theme) out.
+[Material-UI]: https://material-ui.com "Material-UI"
+[Gatsby]: https://www.gatsbyjs.org "Gatsby"
