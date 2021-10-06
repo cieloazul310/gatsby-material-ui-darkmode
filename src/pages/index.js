@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <Layout>
       <Typography variant="h4" component="h1" gutterBottom>
-        Gatsby v4-beta example
+        Gatsby v5 example
       </Typography>
       <Link to="/about" color="secondary">
         Go to the about page
