@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import initialTheme from '../../src/theme';
-import ColorModeContext from '../../src/DispatchContext';
+import ColorModeContext from '../../src/ColorModeContext';
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -26,7 +26,6 @@ const getDesignTokens = (mode) => ({
 });
 
 export default function TopLayout(props) {
-  // const [state, dispatch] = React.useReducer(themeReducer, initialState);
   const [mode, setMode] = React.useState('light');
   const colorMode = React.useMemo(
     () => ({

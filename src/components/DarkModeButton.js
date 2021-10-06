@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import useTheme from '@mui/material/styles/useTheme';
 import Brightness4 from '@mui/icons-material/Brightness4';
 import Brightness5 from '@mui/icons-material/Brightness5';
-import ColorModeContext from '../DispatchContext';
+import ColorModeContext from '../ColorModeContext';
 
 function DarkModeButton(props) {
   const { mode } = useTheme().palette;
