@@ -1,8 +1,8 @@
-import { teal, orange } from '@material-ui/core/colors';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { teal, orange } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 
 // A custom theme for this app
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: teal,
     secondary: orange

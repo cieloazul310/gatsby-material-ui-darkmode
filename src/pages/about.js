@@ -1,5 +1,5 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import * as React from 'react';
+import Typography from '@mui/material/Typography';
 import Layout from '../layout';
 import ProTip from '../components/ProTip';
 import Link from '../components/Link';
