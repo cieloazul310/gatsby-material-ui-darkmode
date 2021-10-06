@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_material_ui_darkmode=self.webpackChunkgatsby_material_ui_darkmode||[]).push([[682],{5518:function(e,t,a){a.r(t),a.d(t,{default:function(){return o}});var n=a(7294),r=a(9308),u=a(4682),l=a(1862),m=a(2599);function o(){return n.createElement(u.Z,null,n.createElement(r.Z,{variant:"h4",component:"h1",gutterBottom:!0},"Gatsby v5 example"),n.createElement(m.Z,{to:"/"},"Go to the main page"),n.createElement(l.Z,null))}}}]);
+//# sourceMappingURL=component---src-pages-about-js-239bb6634c75ceeaf9f1.js.map
