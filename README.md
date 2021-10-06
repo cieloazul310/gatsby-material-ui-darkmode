@@ -1,6 +1,6 @@
-# Gatsby Material-UI dark mode example
+# Gatsby MUI dark mode example
 
-[Gatsby] [Material-UI] dark mode example
+[Gatsby] [MUI] dark mode example
 
 ## How to use
 
@@ -15,24 +15,22 @@ $ yarn run develop
 $ yarn run build
 ```
 
-## Custom Hook
+## Toggle color mode
 
 ```jsx
-import useTheme from '@material-ui/core/styles/useTheme';
-import { useToggleDarkMode } from './DispatchContext';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import ColorModeContext from './ColorModeContext';
 
-function App() {
-  const paletteType = useTheme().palette.type;
-  const _toggleDarkMode = useToggleDarkMode();
+function ToggleButton() {
+  const colorMode = React.useContext(ColorModeContext);
   return (
-    <div>
-      <button onClick={_toggleDarkMode}>
-        {paletteType === 'dark' ? 'on' : 'off'}
-      </button>
-    </div>
+    <Button onClick={colorMode.toggleColorMode}>
+      Toggle Color Mode
+    </Button>
   );
 }
 ```
 
-[Material-UI]: https://material-ui.com "Material-UI"
+[MUI]: https://mui.com "MUI"
 [Gatsby]: https://www.gatsbyjs.org "Gatsby"
