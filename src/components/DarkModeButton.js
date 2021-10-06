@@ -1,17 +1,17 @@
-import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import useTheme from '@material-ui/core/styles/useTheme';
-import Brightness4 from '@material-ui/icons/Brightness4';
-import Brightness5 from '@material-ui/icons/Brightness5';
-import { useToggleDarkMode } from '../DispatchContext';
+import * as React from 'react';
+import IconButton from '@mui/material/IconButton';
+import useTheme from '@mui/material/styles/useTheme';
+import Brightness4 from '@mui/icons-material/Brightness4';
+import Brightness5 from '@mui/icons-material/Brightness5';
+import ColorModeContext from '../ColorModeContext';
 
 function DarkModeButton(props) {
-  const paletteType = useTheme().palette.type;
-  const _toggleDarkMode = useToggleDarkMode();
+  const { mode } = useTheme().palette;
+  const colorMode = React.useContext(ColorModeContext);
   
   return (
-    <IconButton onClick={_toggleDarkMode} {...props}>
-      {paletteType === 'dark' ? <Brightness5 /> : <Brightness4 />}
+    <IconButton onClick={colorMode.toggleColorMode} {...props}>
+      {mode === 'dark' ? <Brightness5 /> : <Brightness4 />}
     </IconButton>
   );
 }

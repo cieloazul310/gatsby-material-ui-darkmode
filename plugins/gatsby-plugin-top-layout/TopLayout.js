@@ -1,26 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import initialTheme from '../../src/theme';
-import { themeReducer, initialState } from '../../src/themeReducer';
-import { DispatchContext } from '../../src/DispatchContext';
+import ColorModeContext from '../../src/ColorModeContext';
+
+const getDesignTokens = (mode) => ({
+  palette: {
+    mode,
+    primary: {
+      ...initialTheme.palette.primary,
+      ...(mode === 'dark' && {
+        main: initialTheme.palette.primary[300],
+      }),
+    },
+    secondary: {
+      ...initialTheme.palette.secondary,
+      ...(mode === 'dark' && {
+        main: initialTheme.palette.secondary[300],
+      }),
+    },
+  },
+});
 
 export default function TopLayout(props) {
-  const [state, dispatch] = React.useReducer(themeReducer, initialState);
-  const { darkMode } = state;
-  const theme = React.useMemo(() => {
-    return createMuiTheme({
-      ...initialTheme,
-      palette: {
-        primary: initialTheme.palette.primary,
-        secondary: initialTheme.palette.secondary,
-        type: darkMode ? 'dark' : 'light'
-      }
-    });
-  }, [darkMode]);
+  const [mode, setMode] = React.useState('light');
+  const colorMode = React.useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    []
+  );
+  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
     <React.Fragment>
@@ -34,13 +50,13 @@ export default function TopLayout(props) {
           rel="stylesheet"
         />
       </Helmet>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <DispatchContext.Provider value={dispatch}>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
           {props.children}
-        </DispatchContext.Provider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
     </React.Fragment>
   );
 }
